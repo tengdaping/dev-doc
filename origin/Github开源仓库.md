@@ -27,5 +27,13 @@ sshkey等操作略过。
 `git fetch upstream`
 `git merge upstream/master`
 
+6.pull request说明
+当本地完成工作后
+`git add xxxx`
+`git commit -m "xxxx"`
+`git push`
+成功后，在Github网站自己的repositores下发起New pull reqeust，
+点击进入后，添加注释，提交pull reqeust，等待管理员审核批准。
+
 
 
