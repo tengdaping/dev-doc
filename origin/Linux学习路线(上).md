@@ -1,19 +1,27 @@
 #Linux学习路线
+^pasta_ping^
 ##1.开机、关机
-重启命令： 
+重启命令：
 ~~~
-[root@localhost /]# reboot  
-[root@localhost /]# shutdown -r now 		//立刻重启(root用户使用)  
-[root@localhost /]# shutdown -r 10			//过10分钟自动重启(root用户使用)  
-[root@localhost /]# shutdown -r 20:35 		//在时间为20:35时候重启(root用户使用)  如果是通过shutdown命令设置重启的话，可以用shutdown -c命令取消重启 
+[root@localhost /]# reboot
+[root@localhost /]# shutdown -r now
+//立刻重启(root用户使用)
+[root@localhost /]# shutdown -r 10
+//过10分钟自动重启(root用户使用)
+[root@localhost /]# shutdown -r 20:35
+//在时间为20:35时候重启(root用户使用)  如果是通过shutdown命令设置重启的话，可以用shutdown -c命令取消重
 ~~~
 
 关机命令：
 ~~~
-[root@localhost /]# halt   					//立刻关机 
-[root@localhost /]# poweroff  				//立刻关机  
-[root@localhost /]# shutdown -h now 		//立刻关机(root用户使用) 
-[root@localhost /]# shutdown -h 10 			//10分钟后自动关机  如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启
+[root@localhost /]# halt
+//立刻关机
+[root@localhost /]# poweroff
+//立刻关机
+[root@localhost /]# shutdown -h now
+//立刻关机(root用户使用) 
+[root@localhost /]# shutdown -h 10
+//10分钟后自动关机  如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启
 ~~~
 ##2.远程连接到某台Linux(ssh)
 推荐使用Tera
@@ -24,7 +32,8 @@ Linux下环境变量设置的三种方法：
 如想将一个路径加入到$PATH中，可以像下面这样做：
 1.控制台中设置，不赞成这种方式，因为他只对当前的shell 起作用，换一个shell设置就无效了：
 ~~~
-[root@localhost /]# PATH="$PATH":/NEW_PATH  //关闭shell Path会还原为原来的path
+[root@localhost /]# PATH="$PATH":/NEW_PATH
+//关闭shell Path会还原为原来的path
 ~~~
 2.修改 /etc/profile 文件，如果你的计算机仅仅作为开发使用时推存使用这种方法，因为所有用户的shell都有权使用这个环境变量，可能会给系统带来安全性问题。这里是针对所有的用户的，所有的shell
 在/etc/profile的最下面添加：
@@ -52,15 +61,20 @@ cat命令连接文件并打印到标准输出设备上。cat经常用来显示�
 -help 打印该命令用法，并退出，其返回码表示成功。
 注意：当文件较大时，文本在屏幕上迅速闪过（滚屏），用户往往看不清所显示的内容。因此，一般用more等命令分屏显示。为了控制滚屏，可以按Ctrl+S键，停止滚屏；按Ctrl+Q键可以恢复滚屏。按Ctrl+C（中断）键可以终止该命令的执行，并且返回Shell提示符状态。
 示例：（设ml和m2是当前目录下的两个文件）
-[root@localhost /]# cat m1 				//屏幕上显示文件ml的内容
-[root@localhost /]# cat m1 m2 			//同时显示文件ml和m2的内容
-[root@localhost /]# cat m1 m2 > file 	//将文件ml和m2合并后放入文件file中
+~~~
+[root@localhost /]# cat m1
+//屏幕上显示文件ml的内容
+[root@localhost /]# cat m1 m2
+//同时显示文件ml和m2的内容
+[root@localhost /]# cat m1 m2 > file
+//将文件ml和m2合并后放入文件file中
+~~~
 
 ###touch命令
 可以修改指定文件的时间标签或者创建一个空文件。
 
 一般格式：
-```touch [选项] 文件名…```
+```touch [选项] 文件名...```
 说明：touch命令将会修改指定文件的时间标签，把已存在文件的时间标签更新为系统当前的时间（默认方式），它们的数据将原封不动地保留下来。如果该文件尚未存在，则建立一个空的新文件。
 选项：
 -a 仅改变指定文件的存取时间。

@@ -102,12 +102,12 @@ free
 语　　法： free [-bkmotV][-s <间隔秒数>]
 补充说明：free指令会显示内存的使用情况，包括实体内存，虚拟的交换文件内存，共享内存区段，以及系统核心使用的缓冲区等。
 参　　数：
-　-b 　以Byte为单位显示内存使用情况。 
-　-k 　以KB为单位显示内存使用情况。 
-　-m 　以MB为单位显示内存使用情况。 
-　-o 　不显示缓冲区调节列。 
-　-s<间隔秒数> 　持续观察内存使用状况。 
-　-t 　显示内存总和列。 
+　-b 　以Byte为单位显示内存使用情况。
+　-k 　以KB为单位显示内存使用情况。
+　-m 　以MB为单位显示内存使用情况。
+　-o 　不显示缓冲区调节列。
+　-s<间隔秒数> 　持续观察内存使用状况。
+　-t 　显示内存总和列。
 　-V 　显示版本信息。
 
 ##15.数据库，MySql的使用(连接，选库，查表，备份)
@@ -115,12 +115,15 @@ free
 ####卸载掉原有mysql
 通过如下命令来查看我们的操作系统上是否已经安装了mysql数据库
 ~~~
-[root@localhost ~]# rpm -qa | grep mysql　　// 这个命令就会查看该操作系统上是否已经安装了mysql数据库
+[root@localhost ~]# rpm -qa | grep mysql　　
+//这个命令就会查看该操作系统上是否已经安装了mysql数据库
 ~~~
 有的话，我们就通过 ```rpm -e``` 命令 或者 ```rpm -e --nodeps``` 命令来卸载掉
 ~~~
-[root@localhost ~]# rpm -e mysql　　// 普通删除模式
-[root@localhost ~]# rpm -e --nodeps mysql　　// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除。
+[root@localhost ~]# rpm -e mysql　　
+//普通删除模式
+[root@localhost ~]# rpm -e --nodeps mysql　　
+//强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除。
 ~~~
 在删除完以后我们可以通过 ```rpm -qa | grep mysql``` 命令来查看mysql是否已经卸载成功。
 
@@ -174,9 +177,6 @@ mysql> use MYSQLDATABASENAME;
 Database changed
 mysql>
 ~~~
-
-
-
 ##16.web服务器的应用(Apache/Nginx/Node.js)
 ###Apache
 安装Apache前准备：
@@ -189,7 +189,7 @@ mysql>
 ```rpm -e httpd软件包```
 ~~~
 [root@localhost ~]# find / -name httpd.conf
-[root@localhost ~]# 
+[root@localhost ~]#
 ~~~
 2.安装Apache
 ~~~
@@ -262,14 +262,20 @@ ftp服务的开启与关闭命令：
 1.环境：
 ftp为vsftp 被限制用户名为test。被限制路径为/home/test
 2.建用户：在root用户下：
-
-# useradd -d /home/test test //增加用户test，并制定test用户的主目录为/home/test
-# passwd test //为test设置密码
+~~~
+[root@localhost ~]# useradd -d /home/test test
+//增加用户test，并制定test用户的主目录为/home/test
+[root@localhost ~]# passwd test
+//为test设置密码
+~~~
 3.更改用户相应的权限设置：
 ~~~
-[root@localhost ~]# usermod -s /sbin/nologin test //限定用户test不能telnet，只能ftp
-[root@localhost ~]# usermod -s /sbin/bash test //用户test恢复正常
-[root@localhost ~]# usermod -d /test test //更改用户test的主目录为/test
+[root@localhost ~]# usermod -s /sbin/nologin test
+//限定用户test不能telnet，只能ftp
+[root@localhost ~]# usermod -s /sbin/bash test
+//用户test恢复正常
+[root@localhost ~]# usermod -d /test test
+//更改用户test的主目录为/test
 ~~~
 4.限制用户只能访问/home/test，不能访问其他路径：
 修改 
@@ -301,7 +307,6 @@ chroot_list_file=/etc/vsftpd/vsftpd.chroot_list
 
 ##20.文件搜索，按内容(find,grep)
 1.在某个路径下查文件。
-
 在/etc下查找“*.log”的文件
 ~~~
 [root@localhost ~]# find /etc -name “*.log”
@@ -335,4 +340,4 @@ grep命令使用简单实例
 ~~~
 [root@localhost ~]# grep 'w\(es\)t.*\1' aa
 ~~~
-如果west被匹配，则es就被存储到内存中，并标记为1，然后搜索任意个字符(.*)，这些字符后面紧跟着 另外一个es(\1)，找到就显示该行。如果用egrep或grep -E，就不用”\”号进行转义，直接写成’w(es)t.*\1′就可以了。
+如果west被匹配，则es就被存储到内存中，并标记为1，然后搜索任意个字符(.\*)，这些字符后面紧跟着 另外一个es(\1)，找到就显示该行。如果用egrep或grep -E，就不用”\”号进行转义，直接写成'w(es)t.*\1′就可以了。

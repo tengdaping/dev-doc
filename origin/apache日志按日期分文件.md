@@ -2,6 +2,11 @@
 
 ^pasta_ping^
 
+~~~
+Linux：CentOS 6.8
+Apache:2.2.15
+~~~
+
 两个配置文件所在位置为
 ~~~
 httpd.conf:
