@@ -140,7 +140,7 @@ Udp:
 [root@localhost ~]# netstat -st 
 [root@localhost ~]# netstat -su
 ~~~
-4. 在 netstat 输出中显示 PID 和进程名称 netstat -p
+4.在 netstat 输出中显示 PID 和进程名称 netstat -p
 netstat -p 可以与其它开关一起使用，就可以添加 “PID/进程名称” 到 netstat 输出中，这样 debugging 的时候可以很方便的发现特定端口运行的程序。
 ~~~
 [root@localhost ~]# netstat -pt
@@ -149,7 +149,7 @@ Proto Recv-Q Send-Q Local Address           Foreign Address         State       
 tcp        1      0 ramesh-laptop.loc:47212 192.168.185.75:www        CLOSE_WAIT  2109/firefox
 tcp        0      0 ramesh-laptop.loc:52750 lax:www ESTABLISHED 2109/firefox
 ~~~
-5. 在 netstat 输出中不显示主机，端口和用户名 (host, port or user)
+5.在 netstat 输出中不显示主机，端口和用户名 (host, port or user)
 当你不想让主机，端口和用户名显示，使用 netstat -n。将会使用数字代替那些名称。
 
 同样可以加速输出，因为不用进行比对查询。
