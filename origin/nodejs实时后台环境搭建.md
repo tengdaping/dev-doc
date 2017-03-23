@@ -1,4 +1,4 @@
-#nodejs实时后台环境搭建
+# nodejs实时后台环境搭建
 pasta_ping
 March 22, 2017 10:40 PM
 
@@ -12,7 +12,7 @@ March 22, 2017 10:40 PM
 
 - - -
 
-####安装VirtualBox
+#### 安装VirtualBox
 新建虚拟电脑
 -	类型选择`Linux`
 -	版本选择`Linux 2.6/3.x/4.x(64-bit)`
@@ -29,10 +29,10 @@ March 22, 2017 10:40 PM
 
 - - -
 
-####配置Linux
+#### 配置Linux
 -	启动，输入帐号密码
 
-#####网络
+##### 网络
 -	菜单 设备-->网络-->网卡1-->桥接网卡
 ~~~
 [root@localhost ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth0
@@ -51,7 +51,7 @@ GATEWAY="192.168.1.1"
 ~~~
 连接虚拟机，这种做法好处多多，在此不赘述。
 
-#####yum源配置
+##### yum源配置
 改为阿里云的源，下载速度快且稳定。
 -	安装wget
 ~~~
@@ -70,7 +70,7 @@ GATEWAY="192.168.1.1"
 [root@localhost ~]# wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
 ~~~
 
-#####samba服务
+##### samba服务
 参考网址 
 `https://www.server-world.info/query?os=CentOS_6&p=samba`
 -	安装
@@ -137,7 +137,7 @@ Starting NMB services:                                     [  OK  ]
 
 - - -
 
-####安装nodejs
+#### 安装nodejs
 由于yum方式下载的nodejs版本过低，故使用下载二进制编码方式安装node和npm
 -	下载安装包
 ~~~
@@ -157,7 +157,7 @@ Starting NMB services:                                     [  OK  ]
 export PATH="$PATH:/usr/local/bin/node-v6.10.1-linux-x64/bin"
 ...
 ~~~
--	产看node版本
+-	查看node版本
 ~~~
 [root@localhost ~]# node -v
 v6.10.1
@@ -165,7 +165,7 @@ v6.10.1
 
 - - -
 
-####安装mysql
+#### 安装mysql
 -	yum安装
 ~~~
 [root@localhost ~]# yum install mysql mysql-server mysql-devel -y
@@ -187,7 +187,7 @@ mysqld          0:off   1:off   2:on    3:on    4:on    5:on    6:off
 
 - - -
 
-####安装pomelo
+#### 安装pomelo
 -	参考网址
 `https://github.com/NetEase/pomelo/wiki/%E5%AE%89%E8%A3%85pomelo`
 -	安装git
