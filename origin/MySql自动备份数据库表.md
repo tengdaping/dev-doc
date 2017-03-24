@@ -37,15 +37,21 @@ crontab是强大好用的定时执行命令工具
 - `backupdatabase.sh`
 
 ~~~shell
-#!/bin/bash  
-#将mailinfo_tthl库中的mailinfo和twitterinfo表加上时间标记的名字备份
-TIMESTAMP=`date +%Y%m%d%H%M%S`
-echo "Start execute sql statement at `date`."
+#!/bin/bash
+tmp="2017-4-07 04:59:59"
+STOPTIME=`date -d"$tmp" +%Y%m%d%H%M%S`
+CURTIME=`date +%Y%m%d%H%M%S`
+
+if [[ $CURTIME -ge $STOPTIME ]]
+then
+        exit 0
+fi
+
 # execute sql stat  
-mysql -uusername -ppassword -e"
+mysql -ufyweb -pfyweb_123 -e"
 use mailinfo_tthl;
-create table mailinfo_bk_${TIMESTAMP} as select * from mailinfo;
-create table twitterinfo_bk_${TIMESTAMP} as select * from twitterinfo;
+create table mailinfo_bk_${CURTIME} as select * from mailinfo;
+create table twitterinfo_bk_${CURTIME} as select * from twitterinfo;
 quit"
 exit;
 ~~~
@@ -53,27 +59,7 @@ exit;
 [root@localhost ~]# chmod 777 backupdatabase.sh
 ~~~
 
--	`stopbackup.sh`
-~~~shell
-#!/bin/bash
-#更换crontab配置
-TIMESTAMP=`date +%Y%m%d%H%M%S`
-echo "Stop backup mailinfo&twitterinfo at "$TIMESTAMP"."
-crontab -l > /tmp/crontab.$TIMESTAMP.bk
-crontab /tmp/crontab.bk
-service crond restart
-~~~
-~~~shell
-[root@localhost ~]# chmod 777 stopbackup.sh
-~~~
-
 ~~~shell
 [root@localhost ~]# crontab -e
-#每天早上五点备份
 0 5 * * * /root/backupdatabase.sh
-#4月7日5：01失效
-1 5 7 4 * /root/stopbackup.sh
 ~~~
-
-#### 部署
--	在/tmp下准备crontab.bk文件，在此案例中，这个文件是空的。
